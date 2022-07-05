@@ -7,18 +7,18 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.jooring.spring.lesson1.lifecycle.model.Comment;
 
-@Controller
+@RestController
 @RequestMapping("/lesson01/test02")
 public class Test02Controller {
 	
 	@RequestMapping("/1")
-	@ResponseBody
+	
 	public List<Map<String, Object>> printList(){
 		
 	List<Map<String, Object>> list = new ArrayList<>();
@@ -68,7 +68,7 @@ public class Test02Controller {
 	
 	}
 	
-	@ResponseBody
+	
 	@RequestMapping("/2")
 	public List<Comment> printObject() {
 		
@@ -99,7 +99,7 @@ public class Test02Controller {
 	}
 	
 	@RequestMapping("/3")
-	@ResponseBody
+
 	public ResponseEntity<Comment> entity(){
 		
 		Comment comment = new Comment();
