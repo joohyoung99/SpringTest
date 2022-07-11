@@ -5,7 +5,7 @@ import java.util.Date;
 public class RealEstate {
 	
 	private int id;
-	private int reraltorId;
+	private int realtorId;
 	private String address;
 	private int area;
 	private String type;
@@ -21,11 +21,11 @@ public class RealEstate {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getReraltorId() {
-		return reraltorId;
+	public int getRealtorId() {
+		return realtorId;
 	}
-	public void setReraltorId(int reraltorId) {
-		this.reraltorId = reraltorId;
+	public void setRealtorId(int reraltorId) {
+		this.realtorId = reraltorId;
 	}
 	public String getAddress() {
 		return address;
