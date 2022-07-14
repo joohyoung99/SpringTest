@@ -16,7 +16,7 @@ public class SellerBO {
 		return sellerDAO.insertSeller(nickname, profileImageUrl, temperature);
 	}
 
-	//Controller는 최대한 간단하고 명료하게, 복잡하면 BO에다 해도 돼 ~
+	//Controller는 최대한 간단하고 명료하게, 복잡하면 BO에다 해도 돼 ~u
 	
 	public Seller getSeller(Integer id) {
 		
