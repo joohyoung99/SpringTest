@@ -20,9 +20,11 @@ public class WeatherBO {
 		return weatherDAO.selectWeather();
 	}
 	
-	public Weatherhistory addWeather(Date date, String weather,double temperatures, double precipitation, String microDust, double windSpeed ) {
+	public int addWeather(Date date,  String weather, double temperatures, double precipitation, String microDust, double windSpeed) {
 		return weatherDAO.insertWeather(date, weather, temperatures, precipitation, microDust, windSpeed);
 		
 	}
+
+	
 
 }

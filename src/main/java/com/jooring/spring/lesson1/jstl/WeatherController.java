@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,16 +28,27 @@ public class WeatherController {
 		return"jstl/test05";
 	}
 	
-	@GetMapping("/jstl/weater/insert")
-	public String addWeather(@RequestParam("date") Date date
-			,@RequestParam("weather") String weather
+	@GetMapping("/jstl/insert_view")
+	public String addWeather(
+			@DateTimeFormat(pattern="yyyy년 MM월 dd일")
+			@RequestParam("date") Date date,
+			@RequestParam("weather") String weather
 			,@RequestParam("temperatures") double temperatures
-			,@RequestParam("precipitaion") double precipitation
+			,@RequestParam("precipitation") double precipitation
 			,@RequestParam("microDust") String microDust
-			,@RequestParam("windSpeed") double windSpeed
-			,Model model) {
+			,@RequestParam("windSpeed")double windSpeed
+			) {
 		
-		weatherBO.addWeather(date, weather, temperatures, precipitation, microDust, windSpeed);
+		int count = weatherBO.addWeather(date,weather,temperatures,precipitation,microDust,windSpeed);
+		
+		
+		return "redirect:/jsp/test05";
+	
+	}
+	
+	
+	@GetMapping("/jstl/input_view")
+	public String inputWeather() {
 		return "jstl/insertWeather";
 	}
 

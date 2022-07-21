@@ -10,11 +10,12 @@
 <title>날씨 입력 페이지</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
-  
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+ <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
 <body>
 
@@ -35,36 +36,36 @@
 			</nav>
 			<div>
 				<h3>날씨 입력</h3>
-				<form method="get" action="/jstl/weather/insert">
+				<form method="get" action="/jstl/insert_view">
 					<label>날짜</label>
-					<input type="text" name="${weather.date }">
+					<input type="text" id="date" name="date">
 					<label>날씨</label>
-					<select>
+					<select name="weather">
 						<option>맑음</option>
 						<option>구름조금</option>
 						<option>흐림</option>
 						<option>비</option>	
 					</select>
 					<label>미세먼지</label>
-					<select>
+					<select name="microDust">
 						<option>좋음</option>
 						<option>보통</option>
 						<option>나쁨</option>
 						<option>최악</option>
-					</select>
+					</select><br>
 					<label>기온</label>
 					<div>
-						<input type="text" name="${weather.temperatures }">
+						<input type="text" name="temperatures">
 						<button>ºC</button>
 					</div>
 					<label>강수량</label>
 					<div>
-						<input type="text" name="${weather.precipitation }">
+						<input type="text" name="precipitation">
 						<button>mm</button>
 					</div>
 					<label>풍속</label>
 					<div>
-						<input type="text" name="${weather.windSpeed }">
+						<input type="text" name="windSpeed">
 						<button>km/h</button>
 					</div>
 					
@@ -73,11 +74,39 @@
 				
 				</form>
 				
+	
 				
 				
 			</div>
 			
 			</div>
+			<footer>
+		<hr>
+		<div class="d-flex">
+			<img width="100" src="data:image/png;base64,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">
+			<div class="small text-secondary">
+				(07062) 서울시 동작구 여의대방로 16길 61 <br>
+				Copyright@2020 KMA All Rights RESERVED.
+			</div>
+		</div>
+		</footer>
 			</div>
 </body>
+
+<script>
+	$(document).ready(function(){
+		
+		$("#date").datepicker({
+			
+			
+			dateFormat:"yy-mm-dd"
+		});
+		
+	});
+
+</script>
+
+
+
+
 </html>
