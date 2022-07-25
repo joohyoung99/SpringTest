@@ -24,5 +24,25 @@ public class FavoriteBO {
 	
 		
 	}
+	
+	public boolean isDuplicateUrl(String url) {
+		int count = favoriteDAO.selectCountByUrl(url);
+		
+		if(count == 0) {
+			return false;
+		}else {
+			return true;
+		}
+		
+		
+		//return count!= 0;
+		
+		//return favoriteDAO.selectCountByUrl(url) != 0;
+	}
+	
+	public deleteUrl(String url) {
+		
+		favoriteDAO.deleteUrl(url);
+	}
 
 }

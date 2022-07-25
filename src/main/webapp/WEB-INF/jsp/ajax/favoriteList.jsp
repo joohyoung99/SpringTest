@@ -36,7 +36,7 @@
 				<td>${favorite.name }</td>
 				<td>${favorite.url }
 				<div class="d-flex justify-content-end">
-				<button class="btn btn-danger ml-4 btn-small d-flex justify-content-end">삭제</button></div></td>
+				<button class="btn btn-danger ml-4 btn-small d-flex justify-content-end" id="deleteBtn">삭제</button></div></td>
 			</tr>
 		
 		
@@ -55,7 +55,22 @@
 
 
 </div>
+	<script>
+		$(document).ready(function(){
+			
+			
+			$("#deleteBtn").on("click",function(){
+				
+				
+				alert();
+			});
+		});
 
+
+
+
+
+	</script>
 
 </body>
 </html>

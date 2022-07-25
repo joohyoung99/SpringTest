@@ -22,14 +22,49 @@
 	<label>주소</label>
 	<div class="d-flex">
 	<input type="text" name="url" id="urlInput" class="form-control col-9">
-	<button class="btn btn-info col-2 ml-4" id="confirmBtn">중복확인</button>
-	</div><br>
+	<button class="btn btn-info col-2 ml-4" id="duplicateBtn">중복확인</button>
+	</div>
+	<div class="text-danger " id="txt-box">중복된 url입니다</div><br>
 	<button type="button" id="addBtn" class="btn btn-success btn-block">추가</button>
 
 
 
 	<script>
 		$(document).ready(function(){
+		$("#txt-box").hide();
+			
+			$("#duplicateBtn").on("click",function(){
+				
+				let url = $("#urlInput").val();
+				
+				if(url == ""){
+					alert("주소를 입력하세요");
+					return false;
+				}
+				
+				$.ajax({
+					type:"get",
+					url:"/ajax/favorite/is_duplicate",
+					data:{"url":url},
+					success:function(data){
+						//is_duplicate: true
+						//is_duplicate: false
+						
+						if(data.is_duplicate){
+						//중복된 상황
+						$("#txt-box").show();
+						}else{
+						$("#txt-box").hide();
+						}
+						},
+					error:function(){
+						alert("에러발생");
+					}
+					
+				});
+			
+			});
+		
 			
 			$("#addBtn").on("click",function(){
 				
@@ -54,7 +89,7 @@
 				
 				$.ajax({
 					
-					type:"get",
+					type:"post",
 					url:"/ajax/favorite/insert",
 					data:{"name":name,"url":url},
 					success:function(data){

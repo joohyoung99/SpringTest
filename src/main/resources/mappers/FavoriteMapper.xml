@@ -46,7 +46,31 @@
     ORDER BY `id` DESC
   
   </select>
+  <select id="selectCountByUrl" parameterType="String" resultType="int">
   
+  
+  	SELECT 
+  		count(1)
+  	FROM
+  		`favorite`
+  	WHERE
+  	 	`url` = #{url}
+  
+
+  
+  </select>
+  
+  <delete id="deleteUrl"  parameterType="String">
+  
+  
+  	DELETE 
+  	FROM 	
+  		`favorite`
+  	WHERE 
+  		`url` = #{url}
+  	
+  
+  </delete>
   
   
   

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,7 +22,7 @@ public class FavoriteController {
 	@Autowired
 	private FavoriteBO favoriteBO;
 	
-	@GetMapping("/insert")
+	@PostMapping("/insert")
 	@ResponseBody
 	public Map<String,String> addFavorite(
 			@RequestParam("name") String name
@@ -60,4 +61,30 @@ public class FavoriteController {
 		
 		return "ajax/favoriteInsert";
 	}
+	
+	@GetMapping("/is_duplicate")
+	@ResponseBody
+	public Map<String, Boolean> isDuplicate(@RequestParam("url") String name) {
+		
+		Map<String, Boolean> result = new HashMap<>();
+		
+		if(favoriteBO.isDuplicateUrl(name)) {
+			//중복된 상태
+			result.put("is_duplicate", true);
+		}else {
+			//중복되지 않은 상태
+			result.put("is_duplicate", false);
+		}
+		
+		// result.put("is_duplicate", favoriteBO.isDuplicateName(url));
+		
+		return result;
+	}
+	
+	public deleteUrl(@RequestParam("url") String url) {
+		
+		
+	}
+	
+	
 }

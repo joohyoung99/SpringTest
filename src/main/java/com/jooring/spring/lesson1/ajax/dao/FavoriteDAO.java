@@ -16,5 +16,10 @@ public interface FavoriteDAO {
 	public List<Favorite> selectFavoriteList();
 
 	
+	//name 
+	//select count(1) from `new_user` where `name` = 'joo';
+	public int selectCountByUrl(@Param("url") String url);
 
+	
+	public int deleteUrl(@Param("url") String url);
 }
