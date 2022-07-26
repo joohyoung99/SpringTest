@@ -81,9 +81,26 @@ public class FavoriteController {
 		return result;
 	}
 	
-	public deleteUrl(@RequestParam("url") String url) {
+	@GetMapping("/delete")
+	@ResponseBody
+	public Map<String,String> deleteId(@RequestParam("id") int id) {
+		
+		int count = favoriteBO.deleteId(id);
+		
+		Map<String,String> result = new HashMap<>();
 		
 		
+		if(count == 1) {
+			
+			result.put("result","success");
+			
+		
+		}else {
+			
+			result.put("result", "fail");
+		}
+		
+		return result;
 	}
 	
 	

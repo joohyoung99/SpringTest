@@ -60,17 +60,17 @@
   
   </select>
   
-  <delete id="deleteUrl"  parameterType="String">
-  
-  
-  	DELETE 
-  	FROM 	
-  		`favorite`
-  	WHERE 
-  		`url` = #{url}
-  	
-  
-  </delete>
+	<delete id="deleteId" parameterType="int"> 
+	
+		DELETE 
+		FROM 
+			`favorite`
+		WHERE 
+			`id` = #{id}
+	
+	
+	
+	</delete>
   
   
   

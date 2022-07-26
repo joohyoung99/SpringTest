@@ -40,9 +40,9 @@ public class FavoriteBO {
 		//return favoriteDAO.selectCountByUrl(url) != 0;
 	}
 	
-	public deleteUrl(String url) {
+	public int deleteId(int id) {
 		
-		favoriteDAO.deleteUrl(url);
+		 return favoriteDAO.deleteId(id);
 	}
 
 }

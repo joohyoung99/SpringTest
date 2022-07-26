@@ -21,5 +21,13 @@ public interface FavoriteDAO {
 	public int selectCountByUrl(@Param("url") String url);
 
 	
-	public int deleteUrl(@Param("url") String url);
+	public int deleteId(@Param("id")int id);
+
+
+
+
 }
+
+
+
+
